@@ -2,10 +2,6 @@ package mysql // import "github.com/NYTimes/gizmo/config/mysql"
 
 import (
 	"database/sql"
-	"fmt"
-	"net/url"
-
-	"github.com/kelseyhightower/envconfig"
 )
 
 // Config holds everything you need to
@@ -43,62 +39,12 @@ var (
 // and MySQLMaxIdleConns values.
 // Users must import a mysql driver in their
 // main to use this.
-func (m *Config) DB() (*sql.DB, error) {
-	db, err := sql.Open("mysql", m.String())
-	if err != nil {
-		return db, err
-	}
-	db.SetMaxIdleConns(MaxIdleConns)
-	db.SetMaxOpenConns(MaxOpenConns)
-	return db, nil
-}
+func (m *Config) DB() (*sql.DB, error) { _ = "STUB: not implemented"; return nil, nil }
 
 // String will return the MySQL connection string.
-func (m *Config) String() string {
-	var port int
-	if m.Port == 0 {
-		port = DefaultMySQLPort
-	} else {
-		port = m.Port
-	}
-
-	var location string
-	if m.Location != "" {
-		location = url.QueryEscape(m.Location)
-	} else {
-		location = url.QueryEscape(DefaultLocation)
-	}
-
-	args, _ := url.ParseQuery(m.AddtlDSNOptions)
-
-	args.Set("parseTime", "true")
-
-	if m.ReadTimeout != "" {
-		args.Set("readTimeout", m.ReadTimeout)
-	}
-	if m.WriteTimeout != "" {
-		args.Set("writeTimeout", m.WriteTimeout)
-	}
-
-	return fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?loc=%s&%s",
-		m.User,
-		m.Pw,
-		m.Host,
-		port,
-		m.DBName,
-		location,
-		args.Encode(),
-	)
-}
+func (m *Config) String() string { _ = "STUB: not implemented"; return "" }
 
 // LoadConfigFromEnv will attempt to load a MySQL object
 // from environment variables. If not populated, nil
 // is returned.
-func LoadConfigFromEnv() *Config {
-	var mysql Config
-	envconfig.Process("", &mysql)
-	if mysql.Host != "" {
-		return &mysql
-	}
-	return nil
-}
+func LoadConfigFromEnv() *Config { _ = "STUB: not implemented"; return nil }

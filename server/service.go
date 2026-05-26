@@ -98,10 +98,12 @@ type ContextHandlerFunc func(context.Context, http.ResponseWriter, *http.Request
 
 // ServeHTTPContext is an implementation of ContextHandler interface.
 func (h ContextHandlerFunc) ServeHTTPContext(ctx context.Context, rw http.ResponseWriter, req *http.Request) {
-	h(ctx, rw, req)
+	_ = "STUB: not implemented"
+
+	// ContextHandler is an equivalent to http.Handler but with additional param.
+	return
 }
 
-// ContextHandler is an equivalent to http.Handler but with additional param.
 type ContextHandler interface {
 	ServeHTTPContext(context.Context, http.ResponseWriter, *http.Request)
 }

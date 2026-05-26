@@ -1,15 +1,7 @@
 package aws // import "github.com/NYTimes/gizmo/config/aws"
 
 import (
-	"fmt"
-	"log"
-
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/credentials"
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/elasticache"
 	"github.com/bradfitz/gomemcache/memcache"
-	"github.com/kelseyhightower/envconfig"
 )
 
 const (
@@ -59,67 +51,21 @@ type (
 // MustClient will use the cache cluster ID to describe
 // the cache cluster and instantiate a memcache.Client
 // with the cache nodes returned from AWS.
-func (e *ElastiCache) MustClient() *memcache.Client {
-	var creds *credentials.Credentials
-	if e.AccessKey != "" {
-		creds = credentials.NewStaticCredentials(e.AccessKey, e.SecretKey, "")
-	} else {
-		creds = credentials.NewEnvCredentials()
-	}
-
-	ecclient := elasticache.New(session.New(&aws.Config{
-		Credentials: creds,
-		Region:      &e.Region,
-	}))
-
-	resp, err := ecclient.DescribeCacheClusters(&elasticache.DescribeCacheClustersInput{
-		CacheClusterId:    &e.ClusterID,
-		ShowCacheNodeInfo: aws.Bool(true),
-	})
-	if err != nil {
-		log.Fatalf("unable to describe cache cluster: %s", err)
-	}
-
-	var nodes []string
-	for _, cluster := range resp.CacheClusters {
-		for _, cnode := range cluster.CacheNodes {
-			addr := fmt.Sprintf("%s:%d", *cnode.Endpoint.Address, *cnode.Endpoint.Port)
-			nodes = append(nodes, addr)
-		}
-	}
-
-	return memcache.New(nodes...)
-}
+func (e *ElastiCache) MustClient() *memcache.Client { _ = "STUB: not implemented"; return nil }
 
 // LoadConfigFromEnv will attempt to load the Config struct
 // from environment variables.
-func LoadConfigFromEnv() Config {
-	var aws Config
-	envconfig.Process("", &aws)
-	return aws
-}
+func LoadConfigFromEnv() Config { _ = "STUB: not implemented"; return *new(Config) }
 
 // LoadDynamoDBFromEnv will attempt to load the DynamoDB struct
 // from environment variables. If not populated, nil
 // is returned.
-func LoadDynamoDBFromEnv() DynamoDB {
-	var ddb DynamoDB
-	envconfig.Process("", &ddb)
-	return ddb
-}
+func LoadDynamoDBFromEnv() DynamoDB { _ = "STUB: not implemented"; return *new(DynamoDB) }
 
 // LoadS3FromEnv will attempt to load the S3 struct
 // from environment variables.
-func LoadS3FromEnv() S3 {
-	var s3 S3
-	envconfig.Process("", &s3)
-	return s3
-}
+func LoadS3FromEnv() S3 { _ = "STUB: not implemented"; return *new(S3) }
 
 // LoadElastiCacheFromEnv will attempt to load the ElasiCache struct
 // from environment variables.
-func LoadElastiCacheFromEnv() ElastiCache {
-	var el ElastiCache
-	envconfig.Process("", &el)
-	return el
-}
+func LoadElastiCacheFromEnv() ElastiCache { _ = "STUB: not implemented"; return *new(ElastiCache) }

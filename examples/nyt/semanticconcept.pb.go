@@ -4,9 +4,13 @@
 
 package nyt
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import (
+	fmt "fmt"
+
+	proto "github.com/golang/protobuf/proto"
+
+	math "math"
+)
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -20,15 +24,16 @@ type SemanticConceptResponse struct {
 	Results    []*SemanticConceptResult `protobuf:"bytes,4,rep,name=results" json:"results,omitempty"`
 }
 
-func (m *SemanticConceptResponse) Reset()                    { *m = SemanticConceptResponse{} }
-func (m *SemanticConceptResponse) String() string            { return proto.CompactTextString(m) }
-func (*SemanticConceptResponse) ProtoMessage()               {}
-func (*SemanticConceptResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
+func (m *SemanticConceptResponse) Reset()         { _ = "STUB: not implemented"; return }
+func (m *SemanticConceptResponse) String() string { _ = "STUB: not implemented"; return "" }
+func (*SemanticConceptResponse) ProtoMessage()    { _ = "STUB: not implemented"; return }
+func (*SemanticConceptResponse) Descriptor() ([]byte, []int) {
+	_ = "STUB: not implemented"
+	return nil, nil
+}
 
 func (m *SemanticConceptResponse) GetResults() []*SemanticConceptResult {
-	if m != nil {
-		return m.Results
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -36,15 +41,16 @@ type SemanticConceptResult struct {
 	ArticleList *SemanticConceptArticleList `protobuf:"bytes,1,opt,name=article_list,json=articleList" json:"article_list,omitempty"`
 }
 
-func (m *SemanticConceptResult) Reset()                    { *m = SemanticConceptResult{} }
-func (m *SemanticConceptResult) String() string            { return proto.CompactTextString(m) }
-func (*SemanticConceptResult) ProtoMessage()               {}
-func (*SemanticConceptResult) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
+func (m *SemanticConceptResult) Reset()         { _ = "STUB: not implemented"; return }
+func (m *SemanticConceptResult) String() string { _ = "STUB: not implemented"; return "" }
+func (*SemanticConceptResult) ProtoMessage()    { _ = "STUB: not implemented"; return }
+func (*SemanticConceptResult) Descriptor() ([]byte, []int) {
+	_ = "STUB: not implemented"
+	return nil, nil
+}
 
 func (m *SemanticConceptResult) GetArticleList() *SemanticConceptArticleList {
-	if m != nil {
-		return m.ArticleList
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -53,15 +59,16 @@ type SemanticConceptArticleList struct {
 	Total   uint32                    `protobuf:"varint,2,opt,name=total" json:"total,omitempty"`
 }
 
-func (m *SemanticConceptArticleList) Reset()                    { *m = SemanticConceptArticleList{} }
-func (m *SemanticConceptArticleList) String() string            { return proto.CompactTextString(m) }
-func (*SemanticConceptArticleList) ProtoMessage()               {}
-func (*SemanticConceptArticleList) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
+func (m *SemanticConceptArticleList) Reset()         { _ = "STUB: not implemented"; return }
+func (m *SemanticConceptArticleList) String() string { _ = "STUB: not implemented"; return "" }
+func (*SemanticConceptArticleList) ProtoMessage()    { _ = "STUB: not implemented"; return }
+func (*SemanticConceptArticleList) Descriptor() ([]byte, []int) {
+	_ = "STUB: not implemented"
+	return nil, nil
+}
 
 func (m *SemanticConceptArticleList) GetResults() []*SemanticConceptArticle {
-	if m != nil {
-		return m.Results
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -72,10 +79,13 @@ type SemanticConceptArticle struct {
 	Url    string `protobuf:"bytes,4,opt,name=url" json:"url,omitempty"`
 }
 
-func (m *SemanticConceptArticle) Reset()                    { *m = SemanticConceptArticle{} }
-func (m *SemanticConceptArticle) String() string            { return proto.CompactTextString(m) }
-func (*SemanticConceptArticle) ProtoMessage()               {}
-func (*SemanticConceptArticle) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3} }
+func (m *SemanticConceptArticle) Reset()         { _ = "STUB: not implemented"; return }
+func (m *SemanticConceptArticle) String() string { _ = "STUB: not implemented"; return "" }
+func (*SemanticConceptArticle) ProtoMessage()    { _ = "STUB: not implemented"; return }
+func (*SemanticConceptArticle) Descriptor() ([]byte, []int) {
+	_ = "STUB: not implemented"
+	return nil, nil
+}
 
 func init() {
 	proto.RegisterType((*SemanticConceptResponse)(nil), "nyt.SemanticConceptResponse")

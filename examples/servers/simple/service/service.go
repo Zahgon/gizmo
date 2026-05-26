@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/NYTimes/gizmo/server"
-	"github.com/NYTimes/gziphandler"
 
 	"github.com/NYTimes/gizmo/examples/nyt"
 )
@@ -26,33 +25,26 @@ type (
 
 // NewSimpleService will instantiate a SimpleService
 // with the given configuration.
-func NewSimpleService(cfg *Config) *SimpleService {
-	return &SimpleService{
-		nyt.NewClient(cfg.MostPopularToken, cfg.SemanticToken),
-	}
-}
+func NewSimpleService(cfg *Config) *SimpleService { _ = "STUB: not implemented"; return nil }
 
 // Prefix returns the string prefix used for all endpoints within
 // this service.
 func (s *SimpleService) Prefix() string {
-	return "/svc/nyt"
+	_ = "STUB: not implemented"
+
+	// Middleware provides an http.Handler hook wrapped around all requests.
+	// In this implementation, we're using a GzipHandler middleware to
+	// compress our responses.
+	return ""
 }
 
-// Middleware provides an http.Handler hook wrapped around all requests.
-// In this implementation, we're using a GzipHandler middleware to
-// compress our responses.
 func (s *SimpleService) Middleware(h http.Handler) http.Handler {
-	return gziphandler.GzipHandler(h)
+	_ = "STUB: not implemented"
+	return *new(http.Handler)
 }
 
 // JSONEndpoints is a listing of all endpoints available in the SimpleService.
 func (s *SimpleService) Endpoints() map[string]map[string]http.HandlerFunc {
-	return map[string]map[string]http.HandlerFunc{
-		"/most-popular/{resourceType}/{section}/{timeframe}": map[string]http.HandlerFunc{
-			"GET": server.JSONToHTTP(s.GetMostPopular).ServeHTTP,
-		},
-		"/cats": map[string]http.HandlerFunc{
-			"GET": s.GetCats,
-		},
-	}
+	_ = "STUB: not implemented"
+	return nil
 }

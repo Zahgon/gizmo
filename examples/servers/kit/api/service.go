@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/NYTimes/gizmo/server/kit"
-	"github.com/NYTimes/gziphandler"
 	"github.com/go-kit/kit/endpoint"
 	httptransport "github.com/go-kit/kit/transport/http"
 	"google.golang.org/grpc"
@@ -29,59 +28,47 @@ var _ ApiServiceServer = service{}
 
 // NewService will instantiate a Service
 // with the given configuration.
-func New(cfg Config) kit.Service {
-	return service{
-		nyt.NewClient(cfg.MostPopularToken, cfg.SemanticToken),
-	}
-}
+func New(cfg Config) kit.Service { _ = "STUB: not implemented"; return *new(kit.Service) }
 
-func (s service) HTTPRouterOptions() []kit.RouterOption {
-	return nil
-}
+func (s service) HTTPRouterOptions() []kit.RouterOption { _ = "STUB: not implemented"; return nil }
 
 func (s service) HTTPOptions() []httptransport.ServerOption {
+	_ = "STUB: not implemented"
+
+	// HTTPMiddleware provides an http.Handler hook wrapped around all requests.
+	// In this implementation, we're using a GzipHandler middleware to
+	// compress our responses.
 	return nil
 }
 
-// HTTPMiddleware provides an http.Handler hook wrapped around all requests.
-// In this implementation, we're using a GzipHandler middleware to
-// compress our responses.
 func (s service) HTTPMiddleware(h http.Handler) http.Handler {
-	return gziphandler.GzipHandler(h)
+	_ = "STUB: not implemented"
+	return *new(http.Handler)
 }
 
 // Middleware provides an kit/endpoint.Middleware hook wrapped around all requests.
 func (s service) Middleware(e endpoint.Endpoint) endpoint.Endpoint {
-	return e
+	_ = "STUB: not implemented"
+
+	// JSONEndpoints is a listing of all endpoints available in the Service.
+	// If using Cloud Endpoints, this is not needed but handy for local dev.
+	return *new(endpoint.Endpoint)
 }
 
-// JSONEndpoints is a listing of all endpoints available in the Service.
-// If using Cloud Endpoints, this is not needed but handy for local dev.
 func (s service) HTTPEndpoints() map[string]map[string]kit.HTTPEndpoint {
-	return map[string]map[string]kit.HTTPEndpoint{
-		"/svc/most-popular/{resourceType:[a-z]+}/{section:[a-z]+}/{timeframe:[0-9]+}": {
-			"GET": {
-				Endpoint: s.getMostPopular,
-				Decoder:  decodeMostPopularRequest,
-			},
-		},
-		"/svc/cats": {
-			"GET": {
-				Endpoint: s.getCats,
-			},
-		},
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (s service) RPCMiddleware() grpc.UnaryServerInterceptor {
-	return nil
+	_ = "STUB: not implemented"
+	return *new(grpc.UnaryServerInterceptor)
 }
 
-func (s service) RPCOptions() []grpc.ServerOption {
-	return nil
-}
+func (s service) RPCOptions() []grpc.ServerOption { _ = "STUB: not implemented"; return nil }
 
 func (s service) RPCServiceDesc() *grpc.ServiceDesc {
+	_ = "STUB: not implemented"
 	// snagged from the pb.go file
-	return &_ApiService_serviceDesc
+	return nil
 }

@@ -6,9 +6,11 @@
 Package readinglist is a generated protocol buffer package.
 
 It is generated from these files:
+
 	service.proto
 
 It has these top-level messages:
+
 	PutLinkRequest
 	GetListLimitRequest
 	Link
@@ -18,13 +20,17 @@ It has these top-level messages:
 */
 package readinglist
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
-import _ "google.golang.org/genproto/googleapis/api/annotations"
-
 import (
+	fmt "fmt"
+
+	proto "github.com/golang/protobuf/proto"
+
+	math "math"
+
+	_ "google.golang.org/genproto/googleapis/api/annotations"
+
 	context "golang.org/x/net/context"
+
 	grpc "google.golang.org/grpc"
 )
 
@@ -44,50 +50,38 @@ type PutLinkRequest struct {
 	Request *LinkRequest `protobuf:"bytes,1,opt,name=request" json:"request,omitempty"`
 }
 
-func (m *PutLinkRequest) Reset()                    { *m = PutLinkRequest{} }
-func (m *PutLinkRequest) String() string            { return proto.CompactTextString(m) }
-func (*PutLinkRequest) ProtoMessage()               {}
-func (*PutLinkRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
+func (m *PutLinkRequest) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *PutLinkRequest) String() string            { _ = "STUB: not implemented"; return "" }
+func (*PutLinkRequest) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*PutLinkRequest) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *PutLinkRequest) GetRequest() *LinkRequest {
-	if m != nil {
-		return m.Request
-	}
-	return nil
-}
+func (m *PutLinkRequest) GetRequest() *LinkRequest { _ = "STUB: not implemented"; return nil }
 
 type GetListLimitRequest struct {
 	// The limit of links to fetch
 	Limit int32 `protobuf:"varint,1,opt,name=limit" json:"limit,omitempty"`
 }
 
-func (m *GetListLimitRequest) Reset()                    { *m = GetListLimitRequest{} }
-func (m *GetListLimitRequest) String() string            { return proto.CompactTextString(m) }
-func (*GetListLimitRequest) ProtoMessage()               {}
-func (*GetListLimitRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
-
-func (m *GetListLimitRequest) GetLimit() int32 {
-	if m != nil {
-		return m.Limit
-	}
-	return 0
+func (m *GetListLimitRequest) Reset()         { _ = "STUB: not implemented"; return }
+func (m *GetListLimitRequest) String() string { _ = "STUB: not implemented"; return "" }
+func (*GetListLimitRequest) ProtoMessage()    { _ = "STUB: not implemented"; return }
+func (*GetListLimitRequest) Descriptor() ([]byte, []int) {
+	_ = "STUB: not implemented"
+	return nil, nil
 }
+
+func (m *GetListLimitRequest) GetLimit() int32 { _ = "STUB: not implemented"; return 0 }
 
 type Link struct {
 	Url string `protobuf:"bytes,1,opt,name=url" json:"url,omitempty"`
 }
 
-func (m *Link) Reset()                    { *m = Link{} }
-func (m *Link) String() string            { return proto.CompactTextString(m) }
-func (*Link) ProtoMessage()               {}
-func (*Link) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+func (m *Link) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *Link) String() string            { _ = "STUB: not implemented"; return "" }
+func (*Link) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*Link) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *Link) GetUrl() string {
-	if m != nil {
-		return m.Url
-	}
-	return ""
-}
+func (m *Link) GetUrl() string { _ = "STUB: not implemented"; return "" }
 
 type LinkRequest struct {
 	// True to remove this link from the user's list.
@@ -95,56 +89,36 @@ type LinkRequest struct {
 	Link   *Link `protobuf:"bytes,2,opt,name=link" json:"link,omitempty"`
 }
 
-func (m *LinkRequest) Reset()                    { *m = LinkRequest{} }
-func (m *LinkRequest) String() string            { return proto.CompactTextString(m) }
-func (*LinkRequest) ProtoMessage()               {}
-func (*LinkRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
+func (m *LinkRequest) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *LinkRequest) String() string            { _ = "STUB: not implemented"; return "" }
+func (*LinkRequest) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*LinkRequest) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *LinkRequest) GetDelete() bool {
-	if m != nil {
-		return m.Delete
-	}
-	return false
-}
+func (m *LinkRequest) GetDelete() bool { _ = "STUB: not implemented"; return false }
 
-func (m *LinkRequest) GetLink() *Link {
-	if m != nil {
-		return m.Link
-	}
-	return nil
-}
+func (m *LinkRequest) GetLink() *Link { _ = "STUB: not implemented"; return nil }
 
 type Links struct {
 	Links []*Link `protobuf:"bytes,1,rep,name=links" json:"links,omitempty"`
 }
 
-func (m *Links) Reset()                    { *m = Links{} }
-func (m *Links) String() string            { return proto.CompactTextString(m) }
-func (*Links) ProtoMessage()               {}
-func (*Links) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+func (m *Links) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *Links) String() string            { _ = "STUB: not implemented"; return "" }
+func (*Links) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*Links) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *Links) GetLinks() []*Link {
-	if m != nil {
-		return m.Links
-	}
-	return nil
-}
+func (m *Links) GetLinks() []*Link { _ = "STUB: not implemented"; return nil }
 
 type Message struct {
 	Message string `protobuf:"bytes,1,opt,name=message" json:"message,omitempty"`
 }
 
-func (m *Message) Reset()                    { *m = Message{} }
-func (m *Message) String() string            { return proto.CompactTextString(m) }
-func (*Message) ProtoMessage()               {}
-func (*Message) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
+func (m *Message) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *Message) String() string            { _ = "STUB: not implemented"; return "" }
+func (*Message) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*Message) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *Message) GetMessage() string {
-	if m != nil {
-		return m.Message
-	}
-	return ""
-}
+func (m *Message) GetMessage() string { _ = "STUB: not implemented"; return "" }
 
 func init() {
 	proto.RegisterType((*PutLinkRequest)(nil), "readinglist.PutLinkRequest")
@@ -177,25 +151,18 @@ type readingListServiceClient struct {
 }
 
 func NewReadingListServiceClient(cc *grpc.ClientConn) ReadingListServiceClient {
-	return &readingListServiceClient{cc}
+	_ = "STUB: not implemented"
+	return *new(ReadingListServiceClient)
 }
 
 func (c *readingListServiceClient) PutLink(ctx context.Context, in *PutLinkRequest, opts ...grpc.CallOption) (*Message, error) {
-	out := new(Message)
-	err := grpc.Invoke(ctx, "/readinglist.ReadingListService/PutLink", in, out, c.cc, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *readingListServiceClient) GetListLimit(ctx context.Context, in *GetListLimitRequest, opts ...grpc.CallOption) (*Links, error) {
-	out := new(Links)
-	err := grpc.Invoke(ctx, "/readinglist.ReadingListService/GetListLimit", in, out, c.cc, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Server API for ReadingListService service
@@ -208,43 +175,18 @@ type ReadingListServiceServer interface {
 }
 
 func RegisterReadingListServiceServer(s *grpc.Server, srv ReadingListServiceServer) {
-	s.RegisterService(&_ReadingListService_serviceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _ReadingListService_PutLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PutLinkRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ReadingListServiceServer).PutLink(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/readinglist.ReadingListService/PutLink",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ReadingListServiceServer).PutLink(ctx, req.(*PutLinkRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ReadingListService_GetListLimit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetListLimitRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ReadingListServiceServer).GetListLimit(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/readinglist.ReadingListService/GetListLimit",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ReadingListServiceServer).GetListLimit(ctx, req.(*GetListLimitRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 var _ReadingListService_serviceDesc = grpc.ServiceDesc{

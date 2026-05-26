@@ -3,27 +3,13 @@ package service
 import (
 	"html/template"
 	"net/http"
-
-	"github.com/NYTimes/gizmo/server"
 )
 
 // Demo will serve an HTML page that demonstrates how to use the 'stream'
 // endpoint.
 func (s *StreamService) Demo(w http.ResponseWriter, r *http.Request) {
-	vals := struct {
-		Port     int
-		StreamID int64
-	}{
-		s.port,
-		server.GetInt64Var(r, "stream_id"),
-	}
-
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	err := demoTempl.Execute(w, &vals)
-	if err != nil {
-		server.Log.Error("template error ", err)
-		http.Error(w, "problems loading HTML", http.StatusInternalServerError)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 var demoTempl = template.Must(template.New("demo").Parse(demoHTML))

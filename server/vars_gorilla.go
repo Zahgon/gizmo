@@ -1,31 +1,20 @@
+//go:build !go1.7
 // +build !go1.7
 
 package server
 
 import (
 	"net/http"
-
-	"github.com/gorilla/context"
 )
 
 // Vars is a helper function for accessing route
 // parameters from any server.Router implementation. This is the equivalent
 // of using `mux.Vars(r)` with the Gorilla mux.Router.
-func Vars(r *http.Request) map[string]string {
-	if rv := context.Get(r, varsKey); rv != nil {
-		vars, _ := rv.(map[string]string)
-		return vars
-	}
-	return nil
-}
+func Vars(r *http.Request) map[string]string { _ = "STUB: not implemented"; return nil }
 
 // SetRouteVars will set the given value into into the request context
 // with the shared 'vars' storage key.
-func SetRouteVars(r *http.Request, val interface{}) {
-	if val != nil {
-		context.Set(r, varsKey, val)
-	}
-}
+func SetRouteVars(r *http.Request, val interface{}) { _ = "STUB: not implemented"; return }
 
 type contextKey int
 

@@ -1,7 +1,6 @@
 package pubsubtest
 
 import (
-	"errors"
 	"sync"
 
 	"github.com/NYTimes/gizmo/pubsub"
@@ -39,43 +38,24 @@ var _ pubsub.MultiPublisher = &TestPublisher{}
 
 // Publish publishes the message, delegating to PublishRaw.
 func (t *TestPublisher) Publish(ctx context.Context, key string, msg proto.Message) error {
-	data, err := proto.Marshal(msg)
-	t.FoundError = err
-	return t.PublishRaw(ctx, key, data)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // PublishRaw publishes the raw message byte slice.
 func (t *TestPublisher) PublishRaw(_ context.Context, key string, msg []byte) error {
-	t.pmu.Lock()
-	defer t.pmu.Unlock()
-	t.Published = append(t.Published, TestPublishMsg{key, msg})
-	return t.GivenError
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // PublishMulti publishes the messages, delegating to Publish.
 func (t *TestPublisher) PublishMulti(ctx context.Context, keys []string, messages []proto.Message) error {
-	if len(keys) != len(messages) {
-		return errors.New("keys and messages must be equal length")
-	}
-
-	for i := range messages {
-		if err := t.Publish(ctx, keys[i], messages[i]); err != nil {
-			return err
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
 // PublishMultiRaw will publish multiple raw byte array messages with a context.
 func (t *TestPublisher) PublishMultiRaw(ctx context.Context, keys []string, messages [][]byte) error {
-	if len(keys) != len(messages) {
-		return errors.New("keys and messages must be equal length")
-	}
-
-	for i := range messages {
-		if err := t.PublishRaw(ctx, keys[i], messages[i]); err != nil {
-			return err
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }

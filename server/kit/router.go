@@ -1,7 +1,6 @@
 package kit
 
 import (
-	"context"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -21,32 +20,15 @@ type RouterOption func(Router) Router
 // RouterSelect allows users to override the
 // default use of the Gorilla Router.
 // TODO add type and constants for names + docs
-func RouterSelect(name string) RouterOption {
-	return func(Router) Router {
-		switch name {
-		case "gorilla":
-			return &gorillaRouter{mux.NewRouter()}
-		case "stdlib":
-			return &stdlibRouter{http.NewServeMux()}
-		default:
-			return &gorillaRouter{mux.NewRouter()}
-		}
-	}
-}
+func RouterSelect(name string) RouterOption { _ = "STUB: not implemented"; return *new(RouterOption) }
 
 // CustomRouter allows users to inject an alternate Router implementation.
-func CustomRouter(r Router) RouterOption {
-	return func(Router) Router {
-		return r
-	}
-}
+func CustomRouter(r Router) RouterOption { _ = "STUB: not implemented"; return *new(RouterOption) }
 
 // RouterNotFound will set the not found handler of the router.
 func RouterNotFound(h http.Handler) RouterOption {
-	return func(r Router) Router {
-		r.SetNotFoundHandler(h)
-		return r
-	}
+	_ = "STUB: not implemented"
+	return *new(RouterOption)
 }
 
 // StdlibRouter is a Router implementation for the Stdlib's `http.ServeMux`.
@@ -57,77 +39,70 @@ type stdlibRouter struct {
 // Handle will call the Stdlib's HandleFunc() methods with a check for the incoming
 // HTTP method. To allow for multiple methods on a single route, use 'ANY'.
 func (g *stdlibRouter) Handle(method, path string, h http.Handler) {
-	g.mux.HandleFunc(path, func(w http.ResponseWriter, r *http.Request) {
-		if r.Method == method || method == "ANY" {
-			h.ServeHTTP(w, r)
-			return
-		}
-		http.NotFound(w, r)
-	})
+	_ = "STUB: not implemented"
+	return
 }
 
 // HandleFunc will call the Stdlib's HandleFunc() methods with a check for the incoming
 // HTTP method. To allow for multiple methods on a single route, use 'ANY'.
 func (g *stdlibRouter) HandleFunc(method, path string, h func(http.ResponseWriter, *http.Request)) {
-	g.Handle(method, path, http.HandlerFunc(h))
+	_ = "STUB: not implemented"
+	return
 }
 
 // SetNotFoundHandler will do nothing as we cannot override the stdlib not found.
 func (g *stdlibRouter) SetNotFoundHandler(h http.Handler) {
+	_ = "STUB: not implemented"
+
+	// ServeHTTP will call Stdlib's ServeMux.ServerHTTP directly.
+	return
 }
 
-// ServeHTTP will call Stdlib's ServeMux.ServerHTTP directly.
 func (g *stdlibRouter) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	g.mux.ServeHTTP(w, r)
+	_ = "STUB: not implemented"
+	return
+
+	// GorillaRouter is a Router implementation for the Gorilla web toolkit's `mux.Router`.
 }
 
-// GorillaRouter is a Router implementation for the Gorilla web toolkit's `mux.Router`.
 type gorillaRouter struct {
 	mux *mux.Router
 }
 
 // Handle will call the Gorilla web toolkit's Handle().Method() methods.
 func (g *gorillaRouter) Handle(method, path string, h http.Handler) {
-	g.mux.Handle(path, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// copy the route params into a shared location
-		// duplicating memory, but allowing Gizmo to be more flexible with
-		// router implementations.
-		r = SetRouteVars(r, mux.Vars(r))
-		h.ServeHTTP(w, r)
-	})).Methods(method)
+	_ = "STUB: not implemented"
+	return
 }
+
+// copy the route params into a shared location
+// duplicating memory, but allowing Gizmo to be more flexible with
+// router implementations.
 
 // HandleFunc will call the Gorilla web toolkit's HandleFunc().Method() methods.
 func (g *gorillaRouter) HandleFunc(method, path string, h func(http.ResponseWriter, *http.Request)) {
-	g.Handle(method, path, http.HandlerFunc(h))
+	_ = "STUB: not implemented"
+	return
 }
 
 // SetNotFoundHandler will set the Gorilla mux.Router.NotFoundHandler.
-func (g *gorillaRouter) SetNotFoundHandler(h http.Handler) {
-	g.mux.NotFoundHandler = h
-}
+func (g *gorillaRouter) SetNotFoundHandler(h http.Handler) { _ = "STUB: not implemented"; return }
 
 // ServeHTTP will call Gorilla mux.Router.ServerHTTP directly.
 func (g *gorillaRouter) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	g.mux.ServeHTTP(w, r)
+	_ = "STUB: not implemented"
+	return
+
+	// Vars is a helper function for accessing route
+	// parameters from any server.Router implementation. This is the equivalent
+	// of using `mux.Vars(r)` with the Gorilla mux.Router.
 }
 
-// Vars is a helper function for accessing route
-// parameters from any server.Router implementation. This is the equivalent
-// of using `mux.Vars(r)` with the Gorilla mux.Router.
-func Vars(r *http.Request) map[string]string {
-	if rv := r.Context().Value(varsKey); rv != nil {
-		vars, _ := rv.(map[string]string)
-		return vars
-	}
-	return nil
-}
+func Vars(r *http.Request) map[string]string { _ = "STUB: not implemented"; return nil }
 
 // SetRouteVars will set the given value into into the request context
 // with the shared 'vars' storage key.
 func SetRouteVars(r *http.Request, val interface{}) *http.Request {
-	if val != nil {
-		r = r.WithContext(context.WithValue(r.Context(), varsKey, val))
-	}
-	return r
+	_ = "STUB: not implemented"
+	return nil
 }

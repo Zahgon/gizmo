@@ -1,7 +1,6 @@
 package pubsubtest
 
 import (
-	"encoding/json"
 	"time"
 
 	"github.com/NYTimes/gizmo/pubsub"
@@ -42,52 +41,28 @@ type (
 
 // Message returns the subscriber message.
 func (m *TestSubsMessage) Message() []byte {
-	return m.Msg
+	_ = "STUB: not implemented"
+
+	// ExtendDoneDeadline changes the underlying DoneTimeout
+	return nil
 }
 
-// ExtendDoneDeadline changes the underlying DoneTimeout
 func (m *TestSubsMessage) ExtendDoneDeadline(d time.Duration) error {
-	m.DoneTimeout = d
+	_ = "STUB: not implemented"
 	return nil
 }
 
 // Done sets the Doned field to true.
-func (m *TestSubsMessage) Done() error {
-	m.Doned = true
-	return nil
-}
+func (m *TestSubsMessage) Done() error { _ = "STUB: not implemented"; return nil }
 
 // Start will populate and return the test channel for the subscriber
 func (t *TestSubscriber) Start() <-chan pubsub.SubscriberMessage {
-	msgs := make(chan pubsub.SubscriberMessage, len(t.JSONMessages)+len(t.ProtoMessages))
-	for _, pmsg := range t.ProtoMessages {
-		msg, err := proto.Marshal(pmsg)
-		if err != nil {
-			t.FoundError = err
-			continue
-		}
-		msgs <- &TestSubsMessage{Msg: msg}
-	}
-
-	for _, jmsg := range t.JSONMessages {
-		msg, err := json.Marshal(jmsg)
-		if err != nil {
-			t.FoundError = err
-			continue
-		}
-		msgs <- &TestSubsMessage{Msg: msg}
-	}
-	close(msgs)
-
-	return msgs
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Err returns the GivenErrError value.
-func (t *TestSubscriber) Err() error {
-	return t.GivenErrError
-}
+func (t *TestSubscriber) Err() error { _ = "STUB: not implemented"; return nil }
 
 // Stop returns the GivenStopError value.
-func (t *TestSubscriber) Stop() error {
-	return t.GivenStopError
-}
+func (t *TestSubscriber) Stop() error { _ = "STUB: not implemented"; return nil }

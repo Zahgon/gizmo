@@ -1,10 +1,7 @@
 package kafka
 
 import (
-	"strings"
-
 	"github.com/Shopify/sarama"
-	"github.com/kelseyhightower/envconfig"
 )
 
 // Config holds the basic information for working with Kafka.
@@ -27,12 +24,4 @@ type Config struct {
 // LoadConfigFromEnv will attempt to load an Kafka object
 // from environment variables. If not populated, nil
 // is returned.
-func LoadConfigFromEnv() *Config {
-	var kafka Config
-	envconfig.Process("", &kafka)
-	if kafka.BrokerHostsString == "" {
-		return nil
-	}
-	kafka.BrokerHosts = strings.Split(kafka.BrokerHostsString, ",")
-	return &kafka
-}
+func LoadConfigFromEnv() *Config { _ = "STUB: not implemented"; return nil }

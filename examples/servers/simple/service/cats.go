@@ -6,28 +6,11 @@ import (
 	"text/template"
 
 	"github.com/NYTimes/gizmo/examples/nyt"
-	"github.com/NYTimes/gizmo/server"
-	"github.com/sirupsen/logrus"
 )
 
 func (s *SimpleService) GetCats(w http.ResponseWriter, r *http.Request) {
-	res, err := s.client.SemanticConceptSearch("des", "cats")
-	if err != nil {
-		server.LogWithFields(r).WithFields(logrus.Fields{
-			"error": err,
-		}).Error("unable to perform semantic search")
-		http.Error(w, "unable to perform cat search", http.StatusServiceUnavailable)
-		return
-	}
-
-	w.Header().Add("Content-Type", "text/html; charset=utf-8")
-	err = catsTemplate.Execute(w, &catList{res})
-	if err != nil {
-		server.LogWithFields(r).WithFields(logrus.Fields{
-			"error": err,
-		}).Error("unable to execute cats template")
-		http.Error(w, "unable to perform cat search", http.StatusServiceUnavailable)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 var tempFuncs = template.FuncMap{"unescape": html.UnescapeString}

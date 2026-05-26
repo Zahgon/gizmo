@@ -8,9 +8,11 @@ type Client struct {
 }
 
 func (t *Client) GetMostPopular(resourceType, section string, timeframe uint) ([]*nyt.MostPopularResult, error) {
-	return t.TestGetMostPopular(resourceType, section, timeframe)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (t *Client) SemanticConceptSearch(conceptType, concept string) ([]*nyt.SemanticConceptArticle, error) {
-	return t.TestSemanticConceptSearch(conceptType, concept)
+	_ = "STUB: not implemented"
+	return nil, nil
 }

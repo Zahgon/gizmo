@@ -6,10 +6,12 @@
 Package nyt is a generated protocol buffer package.
 
 It is generated from these files:
+
 	mostpopular.proto
 	semanticconcept.proto
 
 It has these top-level messages:
+
 	MostPopularResponse
 	MostPopularResult
 	SemanticConceptResponse
@@ -19,9 +21,13 @@ It has these top-level messages:
 */
 package nyt
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import (
+	fmt "fmt"
+
+	proto "github.com/golang/protobuf/proto"
+
+	math "math"
+)
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -39,15 +45,16 @@ type MostPopularResponse struct {
 	Results    []*MostPopularResult `protobuf:"bytes,4,rep,name=results" json:"results,omitempty"`
 }
 
-func (m *MostPopularResponse) Reset()                    { *m = MostPopularResponse{} }
-func (m *MostPopularResponse) String() string            { return proto.CompactTextString(m) }
-func (*MostPopularResponse) ProtoMessage()               {}
-func (*MostPopularResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
+func (m *MostPopularResponse) Reset()         { _ = "STUB: not implemented"; return }
+func (m *MostPopularResponse) String() string { _ = "STUB: not implemented"; return "" }
+func (*MostPopularResponse) ProtoMessage()    { _ = "STUB: not implemented"; return }
+func (*MostPopularResponse) Descriptor() ([]byte, []int) {
+	_ = "STUB: not implemented"
+	return nil, nil
+}
 
 func (m *MostPopularResponse) GetResults() []*MostPopularResult {
-	if m != nil {
-		return m.Results
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
@@ -67,10 +74,10 @@ type MostPopularResult struct {
 	Views         uint32 `protobuf:"varint,13,opt,name=views" json:"views,omitempty"`
 }
 
-func (m *MostPopularResult) Reset()                    { *m = MostPopularResult{} }
-func (m *MostPopularResult) String() string            { return proto.CompactTextString(m) }
-func (*MostPopularResult) ProtoMessage()               {}
-func (*MostPopularResult) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+func (m *MostPopularResult) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *MostPopularResult) String() string            { _ = "STUB: not implemented"; return "" }
+func (*MostPopularResult) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*MostPopularResult) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 func init() {
 	proto.RegisterType((*MostPopularResponse)(nil), "nyt.MostPopularResponse")

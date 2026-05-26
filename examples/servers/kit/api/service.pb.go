@@ -6,9 +6,11 @@
 Package api is a generated protocol buffer package.
 
 It is generated from these files:
+
 	service.proto
 
 It has these top-level messages:
+
 	GetMostPopularResourceTypeSectionTimeframeRequest
 	CatResult
 	CatsResponse
@@ -17,14 +19,19 @@ It has these top-level messages:
 */
 package api
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
-import google_protobuf "github.com/golang/protobuf/ptypes/empty"
-import _ "google.golang.org/genproto/googleapis/api/annotations"
-
 import (
+	fmt "fmt"
+
+	proto "github.com/golang/protobuf/proto"
+
+	math "math"
+
+	google_protobuf "github.com/golang/protobuf/ptypes/empty"
+
+	_ "google.golang.org/genproto/googleapis/api/annotations"
+
 	context "golang.org/x/net/context"
+
 	grpc "google.golang.org/grpc"
 )
 
@@ -49,34 +56,36 @@ type GetMostPopularResourceTypeSectionTimeframeRequest struct {
 }
 
 func (m *GetMostPopularResourceTypeSectionTimeframeRequest) Reset() {
-	*m = GetMostPopularResourceTypeSectionTimeframeRequest{}
+	_ = "STUB: not implemented"
+	return
 }
+
 func (m *GetMostPopularResourceTypeSectionTimeframeRequest) String() string {
-	return proto.CompactTextString(m)
+	_ = "STUB: not implemented"
+	return ""
 }
-func (*GetMostPopularResourceTypeSectionTimeframeRequest) ProtoMessage() {}
+
+func (*GetMostPopularResourceTypeSectionTimeframeRequest) ProtoMessage() {
+	_ = "STUB: not implemented"
+	return
+}
 func (*GetMostPopularResourceTypeSectionTimeframeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor0, []int{0}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (m *GetMostPopularResourceTypeSectionTimeframeRequest) GetResourceType() string {
-	if m != nil {
-		return m.ResourceType
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (m *GetMostPopularResourceTypeSectionTimeframeRequest) GetSection() string {
-	if m != nil {
-		return m.Section
-	}
+	_ = "STUB: not implemented"
 	return ""
 }
 
 func (m *GetMostPopularResourceTypeSectionTimeframeRequest) GetTimeframe() int32 {
-	if m != nil {
-		return m.Timeframe
-	}
+	_ = "STUB: not implemented"
 	return 0
 }
 
@@ -87,38 +96,18 @@ type CatResult struct {
 	URL    string `protobuf:"bytes,1,opt,name=URL" json:"URL,omitempty"`
 }
 
-func (m *CatResult) Reset()                    { *m = CatResult{} }
-func (m *CatResult) String() string            { return proto.CompactTextString(m) }
-func (*CatResult) ProtoMessage()               {}
-func (*CatResult) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+func (m *CatResult) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *CatResult) String() string            { _ = "STUB: not implemented"; return "" }
+func (*CatResult) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*CatResult) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *CatResult) GetBody() string {
-	if m != nil {
-		return m.Body
-	}
-	return ""
-}
+func (m *CatResult) GetBody() string { _ = "STUB: not implemented"; return "" }
 
-func (m *CatResult) GetByline() string {
-	if m != nil {
-		return m.Byline
-	}
-	return ""
-}
+func (m *CatResult) GetByline() string { _ = "STUB: not implemented"; return "" }
 
-func (m *CatResult) GetTitle() string {
-	if m != nil {
-		return m.Title
-	}
-	return ""
-}
+func (m *CatResult) GetTitle() string { _ = "STUB: not implemented"; return "" }
 
-func (m *CatResult) GetURL() string {
-	if m != nil {
-		return m.URL
-	}
-	return ""
-}
+func (m *CatResult) GetURL() string { _ = "STUB: not implemented"; return "" }
 
 type CatsResponse struct {
 	NumResults uint32       `protobuf:"varint,2,opt,name=NumResults" json:"NumResults,omitempty"`
@@ -126,31 +115,16 @@ type CatsResponse struct {
 	Status     string       `protobuf:"bytes,1,opt,name=Status" json:"Status,omitempty"`
 }
 
-func (m *CatsResponse) Reset()                    { *m = CatsResponse{} }
-func (m *CatsResponse) String() string            { return proto.CompactTextString(m) }
-func (*CatsResponse) ProtoMessage()               {}
-func (*CatsResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+func (m *CatsResponse) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *CatsResponse) String() string            { _ = "STUB: not implemented"; return "" }
+func (*CatsResponse) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*CatsResponse) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *CatsResponse) GetNumResults() uint32 {
-	if m != nil {
-		return m.NumResults
-	}
-	return 0
-}
+func (m *CatsResponse) GetNumResults() uint32 { _ = "STUB: not implemented"; return 0 }
 
-func (m *CatsResponse) GetResults() []*CatResult {
-	if m != nil {
-		return m.Results
-	}
-	return nil
-}
+func (m *CatsResponse) GetResults() []*CatResult { _ = "STUB: not implemented"; return nil }
 
-func (m *CatsResponse) GetStatus() string {
-	if m != nil {
-		return m.Status
-	}
-	return ""
-}
+func (m *CatsResponse) GetStatus() string { _ = "STUB: not implemented"; return "" }
 
 type MostPopularResponse struct {
 	NumResults uint32               `protobuf:"varint,2,opt,name=NumResults" json:"NumResults,omitempty"`
@@ -158,31 +132,22 @@ type MostPopularResponse struct {
 	Status     string               `protobuf:"bytes,1,opt,name=Status" json:"Status,omitempty"`
 }
 
-func (m *MostPopularResponse) Reset()                    { *m = MostPopularResponse{} }
-func (m *MostPopularResponse) String() string            { return proto.CompactTextString(m) }
-func (*MostPopularResponse) ProtoMessage()               {}
-func (*MostPopularResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
-
-func (m *MostPopularResponse) GetNumResults() uint32 {
-	if m != nil {
-		return m.NumResults
-	}
-	return 0
+func (m *MostPopularResponse) Reset()         { _ = "STUB: not implemented"; return }
+func (m *MostPopularResponse) String() string { _ = "STUB: not implemented"; return "" }
+func (*MostPopularResponse) ProtoMessage()    { _ = "STUB: not implemented"; return }
+func (*MostPopularResponse) Descriptor() ([]byte, []int) {
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
+func (m *MostPopularResponse) GetNumResults() uint32 { _ = "STUB: not implemented"; return 0 }
+
 func (m *MostPopularResponse) GetResults() []*MostPopularResult {
-	if m != nil {
-		return m.Results
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (m *MostPopularResponse) GetStatus() string {
-	if m != nil {
-		return m.Status
-	}
-	return ""
-}
+func (m *MostPopularResponse) GetStatus() string { _ = "STUB: not implemented"; return "" }
 
 type MostPopularResult struct {
 	Abstract      string `protobuf:"bytes,10,opt,name=Abstract" json:"Abstract,omitempty"`
@@ -199,94 +164,34 @@ type MostPopularResult struct {
 	URL           string `protobuf:"bytes,1,opt,name=URL" json:"URL,omitempty"`
 }
 
-func (m *MostPopularResult) Reset()                    { *m = MostPopularResult{} }
-func (m *MostPopularResult) String() string            { return proto.CompactTextString(m) }
-func (*MostPopularResult) ProtoMessage()               {}
-func (*MostPopularResult) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+func (m *MostPopularResult) Reset()                    { _ = "STUB: not implemented"; return }
+func (m *MostPopularResult) String() string            { _ = "STUB: not implemented"; return "" }
+func (*MostPopularResult) ProtoMessage()               { _ = "STUB: not implemented"; return }
+func (*MostPopularResult) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
-func (m *MostPopularResult) GetAbstract() string {
-	if m != nil {
-		return m.Abstract
-	}
-	return ""
-}
+func (m *MostPopularResult) GetAbstract() string { _ = "STUB: not implemented"; return "" }
 
-func (m *MostPopularResult) GetAssetID() uint64 {
-	if m != nil {
-		return m.AssetID
-	}
-	return 0
-}
+func (m *MostPopularResult) GetAssetID() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (m *MostPopularResult) GetByline() string {
-	if m != nil {
-		return m.Byline
-	}
-	return ""
-}
+func (m *MostPopularResult) GetByline() string { _ = "STUB: not implemented"; return "" }
 
-func (m *MostPopularResult) GetColumn() string {
-	if m != nil {
-		return m.Column
-	}
-	return ""
-}
+func (m *MostPopularResult) GetColumn() string { _ = "STUB: not implemented"; return "" }
 
-func (m *MostPopularResult) GetID() uint64 {
-	if m != nil {
-		return m.ID
-	}
-	return 0
-}
+func (m *MostPopularResult) GetID() uint64 { _ = "STUB: not implemented"; return 0 }
 
-func (m *MostPopularResult) GetKeywords() string {
-	if m != nil {
-		return m.Keywords
-	}
-	return ""
-}
+func (m *MostPopularResult) GetKeywords() string { _ = "STUB: not implemented"; return "" }
 
-func (m *MostPopularResult) GetPublishedDate() string {
-	if m != nil {
-		return m.PublishedDate
-	}
-	return ""
-}
+func (m *MostPopularResult) GetPublishedDate() string { _ = "STUB: not implemented"; return "" }
 
-func (m *MostPopularResult) GetSection() string {
-	if m != nil {
-		return m.Section
-	}
-	return ""
-}
+func (m *MostPopularResult) GetSection() string { _ = "STUB: not implemented"; return "" }
 
-func (m *MostPopularResult) GetSource() string {
-	if m != nil {
-		return m.Source
-	}
-	return ""
-}
+func (m *MostPopularResult) GetSource() string { _ = "STUB: not implemented"; return "" }
 
-func (m *MostPopularResult) GetTitle() string {
-	if m != nil {
-		return m.Title
-	}
-	return ""
-}
+func (m *MostPopularResult) GetTitle() string { _ = "STUB: not implemented"; return "" }
 
-func (m *MostPopularResult) GetType() string {
-	if m != nil {
-		return m.Type
-	}
-	return ""
-}
+func (m *MostPopularResult) GetType() string { _ = "STUB: not implemented"; return "" }
 
-func (m *MostPopularResult) GetURL() string {
-	if m != nil {
-		return m.URL
-	}
-	return ""
-}
+func (m *MostPopularResult) GetURL() string { _ = "STUB: not implemented"; return "" }
 
 func init() {
 	proto.RegisterType((*GetMostPopularResourceTypeSectionTimeframeRequest)(nil), "api.GetMostPopularResourceTypeSectionTimeframeRequest")
@@ -318,25 +223,18 @@ type apiServiceClient struct {
 }
 
 func NewApiServiceClient(cc *grpc.ClientConn) ApiServiceClient {
-	return &apiServiceClient{cc}
+	_ = "STUB: not implemented"
+	return *new(ApiServiceClient)
 }
 
 func (c *apiServiceClient) GetCats(ctx context.Context, in *google_protobuf.Empty, opts ...grpc.CallOption) (*CatsResponse, error) {
-	out := new(CatsResponse)
-	err := grpc.Invoke(ctx, "/api.ApiService/GetCats", in, out, c.cc, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *apiServiceClient) GetMostPopularResourceTypeSectionTimeframe(ctx context.Context, in *GetMostPopularResourceTypeSectionTimeframeRequest, opts ...grpc.CallOption) (*MostPopularResponse, error) {
-	out := new(MostPopularResponse)
-	err := grpc.Invoke(ctx, "/api.ApiService/GetMostPopularResourceTypeSectionTimeframe", in, out, c.cc, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Server API for ApiService service
@@ -349,43 +247,18 @@ type ApiServiceServer interface {
 }
 
 func RegisterApiServiceServer(s *grpc.Server, srv ApiServiceServer) {
-	s.RegisterService(&_ApiService_serviceDesc, srv)
+	_ = "STUB: not implemented"
+	return
 }
 
 func _ApiService_GetCats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(google_protobuf.Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ApiServiceServer).GetCats(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/api.ApiService/GetCats",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ApiServiceServer).GetCats(ctx, req.(*google_protobuf.Empty))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func _ApiService_GetMostPopularResourceTypeSectionTimeframe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetMostPopularResourceTypeSectionTimeframeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ApiServiceServer).GetMostPopularResourceTypeSectionTimeframe(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/api.ApiService/GetMostPopularResourceTypeSectionTimeframe",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ApiServiceServer).GetMostPopularResourceTypeSectionTimeframe(ctx, req.(*GetMostPopularResourceTypeSectionTimeframeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 var _ApiService_serviceDesc = grpc.ServiceDesc{

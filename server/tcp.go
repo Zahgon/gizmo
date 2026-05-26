@@ -2,7 +2,6 @@ package server
 
 import (
 	"net"
-	"time"
 )
 
 // TCPKeepAliveListener sets TCP keep-alive timeouts on accepted
@@ -22,17 +21,6 @@ type TCPKeepAliveListener struct {
 // Accept accepts the next incoming call and returns the new
 // connection. KeepAlivePeriod is set properly.
 func (ln TCPKeepAliveListener) Accept() (c net.Conn, err error) {
-	tc, err := ln.AcceptTCP()
-	if err != nil {
-		return
-	}
-	err = tc.SetKeepAlive(true)
-	if err != nil {
-		return
-	}
-	err = tc.SetKeepAlivePeriod(3 * time.Minute)
-	if err != nil {
-		return
-	}
-	return tc, nil
+	_ = "STUB: not implemented"
+	return *new(net.Conn), nil
 }

@@ -4,7 +4,6 @@ import (
 	"time"
 
 	"github.com/NYTimes/gizmo/config/aws"
-	"github.com/kelseyhightower/envconfig"
 )
 
 type (
@@ -41,17 +40,9 @@ type (
 // LoadSQSConfigFromEnv will attempt to load the SQSConfig struct
 // from environment variables. If not populated, nil
 // is returned.
-func LoadSQSConfigFromEnv() SQSConfig {
-	var cfg SQSConfig
-	envconfig.Process("", &cfg)
-	return cfg
-}
+func LoadSQSConfigFromEnv() SQSConfig { _ = "STUB: not implemented"; return *new(SQSConfig) }
 
 // LoadSNSConfigFromEnv will attempt to load the SNSConfig struct
 // from environment variables. If not populated, nil
 // is returned.
-func LoadSNSConfigFromEnv() SNSConfig {
-	var cfg SNSConfig
-	envconfig.Process("", &cfg)
-	return cfg
-}
+func LoadSNSConfigFromEnv() SNSConfig { _ = "STUB: not implemented"; return *new(SNSConfig) }

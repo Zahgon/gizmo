@@ -1,12 +1,7 @@
 package kit
 
 import (
-	"os"
-	"runtime"
-	"strconv"
 	"time"
-
-	"github.com/kelseyhightower/envconfig"
 )
 
 // Config holds info required to configure a gizmo kit.Server.
@@ -54,40 +49,6 @@ type Config struct {
 	EnablePProf bool `envconfig:"ENABLE_PPROF"`
 }
 
-func loadConfig() Config {
-	var cfg Config
-	envconfig.MustProcess("", &cfg)
-	if cfg.HTTPPort == 0 {
-		var err error
-		// fall back to PORT for GAE
-		cfg.HTTPPort, err = strconv.Atoi(os.Getenv("PORT"))
-		if err != nil {
-			cfg.HTTPPort = 8080
-		}
-	}
-	if cfg.RPCPort == 0 {
-		cfg.RPCPort = 8081
-	}
-	if cfg.MaxHeaderBytes == 0 {
-		cfg.MaxHeaderBytes = 1 << 20
-	}
-	if cfg.ReadTimeout.Nanoseconds() == 0 {
-		cfg.ReadTimeout = 10 * time.Second
-	}
-	if cfg.IdleTimeout.Nanoseconds() == 0 {
-		cfg.IdleTimeout = 120 * time.Second
-	}
-	if cfg.WriteTimeout.Nanoseconds() == 0 {
-		cfg.WriteTimeout = 10 * time.Second
-	}
-	if cfg.GOMAXPROCS > 0 {
-		runtime.GOMAXPROCS(cfg.GOMAXPROCS)
-	}
-	if cfg.HealthCheckPath == "" {
-		cfg.HealthCheckPath = "/healthz"
-	}
-	if cfg.ShutdownTimeout.Nanoseconds() == 0 {
-		cfg.ShutdownTimeout = 5 * time.Minute
-	}
-	return cfg
-}
+func loadConfig() Config { _ = "STUB: not implemented"; return *new(Config) }
+
+// fall back to PORT for GAE

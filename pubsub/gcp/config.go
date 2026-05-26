@@ -2,7 +2,6 @@ package gcp
 
 import (
 	gpubsub "cloud.google.com/go/pubsub"
-	"github.com/kelseyhightower/envconfig"
 )
 
 // Config holds common credentials and config values for
@@ -27,8 +26,4 @@ type Config struct {
 
 // LoadConfigFromEnv will attempt to load a PubSub config
 // from environment variables.
-func LoadConfigFromEnv() Config {
-	var ps Config
-	envconfig.Process("", &ps)
-	return ps
-}
+func LoadConfigFromEnv() Config { _ = "STUB: not implemented"; return *new(Config) }

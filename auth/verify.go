@@ -2,13 +2,9 @@ package auth // import "github.com/NYTimes/gizmo/auth"
 
 import (
 	"context"
-	"encoding/base64"
-	"encoding/json"
 	"net/http"
-	"strings"
 	"time"
 
-	httptransport "github.com/go-kit/kit/transport/http"
 	"github.com/pkg/errors"
 	"golang.org/x/oauth2/jws"
 )
@@ -46,117 +42,43 @@ type VerifyFunc func(context.Context, interface{}) bool
 
 // NewVerifier returns a genric Verifier that will use the given funcs and key source.
 func NewVerifier(ks PublicKeySource, df ClaimsDecoderFunc, vf VerifyFunc) *Verifier {
-	return &Verifier{
-		ks:            ks,
-		df:            df,
-		vf:            vf,
-		skewAllowance: int64(defaultSkewAllowance.Seconds()),
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // VerifyInboundKitContext is meant to be used within a go-kit stack that has populated
 // the context with common headers, specficially
 // kit/transport/http.ContextKeyRequestAuthorization.
 func (c Verifier) VerifyInboundKitContext(ctx context.Context) (bool, error) {
-	authHdr, ok := ctx.Value(httptransport.ContextKeyRequestAuthorization).(string)
-	if !ok {
-		return false, errors.New("auth header did not exist")
-	}
-
-	token, err := parseHeader(authHdr)
-	if err != nil {
-		return false, err
-	}
-
-	return c.Verify(ctx, token)
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 // VerifyRequest will pull the token from the "Authorization" header of the inbound
 // request then decode and verify it.
 func (c Verifier) VerifyRequest(r *http.Request) (bool, error) {
-	token, err := GetAuthorizationToken(r)
-	if err != nil {
-		return false, err
-	}
-
-	return c.Verify(r.Context(), token)
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 // Verify will accept an opaque JWT token, decode it and verify it.
 func (c Verifier) Verify(ctx context.Context, token string) (bool, error) {
-	hdr, rawPayload, err := decodeToken(token)
-	if err != nil {
-		return false, errors.Wrap(ErrBadCreds, err.Error())
-	}
-
-	keys, err := c.ks.Get(ctx)
-	if err != nil {
-		return false, err
-	}
-
-	key, err := keys.GetKey(hdr.KeyID)
-	if err != nil {
-		return false, err
-	}
-
-	err = jws.Verify(token, key)
-	if err != nil {
-		return false, errors.Wrap(ErrBadCreds, err.Error())
-	}
-
-	// use claims decoder func
-	clmstr, err := c.df(ctx, rawPayload)
-	if err != nil {
-		return false, err
-	}
-
-	claims := clmstr.BaseClaims()
-	nowUnix := TimeNow().Unix()
-
-	if nowUnix < (claims.Iat - c.skewAllowance) {
-		return false, errors.New("invalid issue time")
-	}
-
-	if nowUnix > (claims.Exp + c.skewAllowance) {
-		return false, errors.Wrap(ErrBadCreds, "invalid expiration time")
-	}
-
-	return c.vf(ctx, clmstr), nil
+	_ = "STUB: not implemented"
+	return false, nil
 }
+
+// use claims decoder func
 
 func decodeToken(token string) (*jws.Header, []byte, error) {
-	s := strings.Split(token, ".")
-	if len(s) != 3 {
-		return nil, nil, errors.New("invalid token")
-	}
-
-	dh, err := base64.RawURLEncoding.DecodeString(s[0])
-	if err != nil {
-		return nil, nil, err
-	}
-	var h jws.Header
-	err = json.Unmarshal(dh, &h)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	dcs, err := base64.RawURLEncoding.DecodeString(s[1])
-	if err != nil {
-		return nil, nil, err
-	}
-	return &h, dcs, nil
+	_ = "STUB: not implemented"
+	return nil, nil, nil
 }
 
-func parseHeader(hdr string) (string, error) {
-	auths := strings.Split(hdr, " ")
-	if len(auths) != 2 {
-		return "", errors.New("auth header invalid format")
-	}
-	return auths[1], nil
-}
+func parseHeader(hdr string) (string, error) { _ = "STUB: not implemented"; return "", nil }
 
 // GetAuthorizationToken will pull the Authorization header from the given request and
 // attempt to retrieve the token within it.
 func GetAuthorizationToken(r *http.Request) (string, error) {
-	return parseHeader(r.Header.Get("Authorization"))
+	_ = "STUB: not implemented"
+	return "", nil
 }

@@ -1,15 +1,7 @@
 package server
 
 import (
-	"flag"
-	"io"
 	"net/http"
-	"os"
-
-	"github.com/NYTimes/gizmo/config"
-	"github.com/NYTimes/logrotate"
-	"github.com/gorilla/handlers"
-	"github.com/kelseyhightower/envconfig"
 )
 
 // Config holds info required to configure a gizmo server.Server.
@@ -95,31 +87,14 @@ type Config struct {
 // LoadConfigFromEnv will attempt to load a Server object
 // from environment variables. If not populated, nil
 // is returned.
-func LoadConfigFromEnv() *Config {
-	var server Config
-	envconfig.Process("", &server)
-	return &server
-}
+func LoadConfigFromEnv() *Config { _ = "STUB: not implemented"; return nil }
 
 // NewAccessLogMiddleware will wrap a logrotate-aware Apache-style access log handler
 // around the given http.Handler if an access log location is provided by the config,
 // or optionally send access logs to stdout.
 func NewAccessLogMiddleware(logLocation *string, handler http.Handler) (http.Handler, error) {
-	if logLocation == nil {
-		return handler, nil
-	}
-	var lw io.Writer
-	var err error
-	switch *logLocation {
-	case "stdout":
-		lw = os.Stdout
-	default:
-		lw, err = logrotate.NewFile(*logLocation)
-		if err != nil {
-			return nil, err
-		}
-	}
-	return handlers.CombinedLoggingHandler(lw, handler), nil
+	_ = "STUB: not implemented"
+	return *new(http.Handler), nil
 }
 
 // SetConfigOverrides will check the *CLI variables for any values
@@ -127,34 +102,17 @@ func NewAccessLogMiddleware(logLocation *string, handler http.Handler) (http.Han
 // If LogCLI is set to "dev", the given `Log` pointer will be set to an
 // empty string.
 func SetConfigOverrides(c *Config) {
+	_ = "STUB: not implemented"
 	// HTTPAccessLogCLI is a pointer to the value of the '-http-access-log' command line flag. It is meant to
 	// declare an access log location for HTTP services.
-	HTTPAccessLogCLI := flag.String("http-access-log", "", "HTTP access log location")
-	// RPCAccessLogCLI is a pointer to the value of the '-rpc-access-log' command line flag. It is meant to
-	// declare an acces log location for RPC services.
-	RPCAccessLogCLI := flag.String("rpc-access-log", "", "RPC access log location")
-	// HTTPPortCLI is a pointer to the value for the '-http' flag. It is meant to declare the port
-	// number to serve HTTP services.
-	HTTPPortCLI := flag.Int("http", 0, "Port to run an HTTP server on")
-	// RPCPortCLI is a pointer to the value for the '-rpc' flag. It is meant to declare the port
-	// number to serve RPC services.
-	RPCPortCLI := flag.Int("rpc", 0, "Port to run an RPC server on")
-
-	config.SetLogOverride(&c.Log)
-
-	if *HTTPAccessLogCLI != "" {
-		c.HTTPAccessLog = HTTPAccessLogCLI
-	}
-
-	if *RPCAccessLogCLI != "" {
-		c.RPCAccessLog = RPCAccessLogCLI
-	}
-
-	if *HTTPPortCLI > 0 {
-		c.HTTPPort = *HTTPPortCLI
-	}
-
-	if *RPCPortCLI > 0 {
-		c.RPCPort = *RPCPortCLI
-	}
+	return
 }
+
+// RPCAccessLogCLI is a pointer to the value of the '-rpc-access-log' command line flag. It is meant to
+// declare an acces log location for RPC services.
+
+// HTTPPortCLI is a pointer to the value for the '-http' flag. It is meant to declare the port
+// number to serve HTTP services.
+
+// RPCPortCLI is a pointer to the value for the '-rpc' flag. It is meant to declare the port
+// number to serve RPC services.
